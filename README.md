@@ -59,3 +59,6 @@ WozUtter supports using a reCHAPCHA on the signup page. Follow these steps to se
 3. Change the `RECAPTCHA_PUBLIC_KEY` variable to your public key.
 4. Change the `RECAPTCHA_PRIVATE_KEY` variable to your private key.
 5. If you want to use SSL, change the `RECAPTCHA_USE_SSL` variable to True.
+
+### WSGI
+WozUtter supports WSGI deployment by providing a `wsgi.py` file. A `server-dist.ini` file is provided for uWSGI. Just copy it over as `server.ini` and modify, if need be.

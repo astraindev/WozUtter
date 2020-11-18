@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#content-display,
+#content-update,
+#content-delete {
+	padding: 0.5rem;
+}
+
+#content-update,
+#content-delete {
+	display: none;
+}
+
+#content-delete-no {
+	margin-left: 1rem;
+}
+
+@media screen and (max-height: 715px) {
+	form div.emojicon {
+		display: none;
+	}
+}

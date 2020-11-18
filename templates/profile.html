@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/bubble.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/modify.css">
+{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div class="bubble">
+        <div class="bubble-header">
+            <div></div>
+            <div>
+                {% if current_user.id == user.id %}
+                    <div id="bubble-header-update" class="bubble-header-item">&#128221;</div>
+                    <div id="bubble-header-delete" class="bubble-header-item">&#10060;</div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="bubble-content">
+            <div id="content-display">
+                <p>
+                    <b>First Name</b>: {{ user.first_name }}
+                </p>
+                <p>
+                    <b>Last Name</b>: {{ user.last_name }}
+                </p>
+            </div>
+            {% if current_user.id == user.id %}
+                <div id="content-update">
+                    <form action="{{ url_for('update_user', user_id=user.id) }}"
+                          method="post" novalidate>
+                        {{ form_update.hidden_tag() }}
+                        <p>
+                            {{ form_update.first_name.label }}<br>
+                            {{ form_update.first_name(size=32, autofocus=True, value=user.first_name) }}<br>
+                            {% for error in form_update.first_name.errors %}
+                                <span class="form-error">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form_update.last_name.label }}<br>
+                            {{ form_update.last_name(size=32, value=user.last_name) }}<br>
+                            {% for error in form_update.last_name.errors %}
+                                <span class="form-error">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>{{ form_update.submit() }}</p>
+                    </form>
+                </div>
+                <div id="content-delete">
+                    <form action="{{ url_for('delete_user', user_id=user.id) }}"
+                          method="post">
+                        {{ form_delete.hidden_tag() }}
+                        <p>
+                            <span class="logo-blue wozutter">Woz</span><span
+                                class="logo-red wozutter">U</span><span
+                                class="logo-green wozutter">tter</span>: Are you sure?
+                        </p>
+                        <p>
+                            {{ form_delete.submit() }}
+                            <button type="button" id="content-delete-no"
+                                    class="content-delete-button">No
+                            </button>
+                        <p>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="../static/js/modify.js"></script>
+{% endblock %}

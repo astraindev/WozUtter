@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+body {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+}
+
+nav {
+	border-bottom-style: outset;
+	border-bottom-width: thin;
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 1rem;
+}
+
+nav header {
+	display: flex;
+}
+
+nav header div {
+	margin-right: 2rem;
+	min-width: fit-content;
+}
+
+nav.menu div.menu-item a {
+	text-decoration-line: none;
+}
+
+div.logo {
+	font-family: 'Lobster', cursive;
+	font-size: 1.75rem;
+	margin-top: -1rem;
+}
+
+span.wozutter {
+	font-family: 'Lobster', cursive;
+}
+
+input[type="submit"] {
+	margin-top: 1.25rem;
+}
+
+form div {
+	padding-bottom: 1rem;
+}
+
+form div label {
+	min-width: 5.5rem;
+}
+
+form div input[type="text"],
+form div input[type="password"],
+form div input[type="submit"] {
+	margin-top: 0.25rem;
+}
+
+form div input[name="message"] {
+	max-width: 100%;
+}
+
+
+@media print {
+	nav {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 525px) {
+	nav header {
+		flex-direction: column;
+	}
+	
+	.menu .menu-item {
+	   padding-bottom: 0.25rem;
+	}
+}

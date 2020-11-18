@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WozUtter</title>
+    <meta charset="UTF-8">
+    <link href="../static/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/colors.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&family=Lobster&display=swap"
+            rel="stylesheet">
+    <link href="../static/css/fonts.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="menu">
+    <header>
+        <div class="menu-item">
+            <a href="{{ url_for('index') }}"><b>Home</b></a>
+        </div>
+        <div class="menu-item">
+            <a href="{{ url_for('read_posts') }}">Posts</a>
+        </div>
+        {% if current_user.is_authenticated %}
+            <div class="menu-item">
+                <a href="{{ url_for('create_post') }}">Add</a>
+            </div>
+            <div class="menu-item">
+                <a href="{{ url_for('read_user', user_id=current_user.id) }}">Profile</a>
+            </div>
+            <div class="menu-item">
+                <form id="sign-out" action="{{ url_for('logout') }}" method="post">
+                    <a class="sign-out" href="#">Sign Out</a>
+                </form>
+            </div>
+        {% else %}
+            <div class="menu-item">
+                <a href="{{ url_for('login') }}">Login</a>
+            </div>
+            <div class="menu-item">
+                <a href="{{ url_for('signup') }}">Sign Up</a>
+            </div>
+        {% endif %}
+    </header>
+    <div class="logo">
+        <span class="logo-blue">Woz</span><span class="logo-red">U</span><span
+            class="logo-green">tter</span>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+{% if current_user.is_authenticated %}
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="../static/js/logout.js"></script>
+{% endif %}
+{% block javascript %}{% endblock %}
+</body>
+</html>

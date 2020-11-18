@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/emojicon.css">
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+
+        {% include 'emoji.html' %}
+
+        <div>
+            {{ form.message.label }}<br>
+            {{ form.message(size=140, maxlength=140, required=True, autofocus=True) }}<br>
+            {% for error in form.message.errors %}
+            <span class="form-error">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div>{{ form.submit() }}</div>
+    </form>
+{% endblock %}

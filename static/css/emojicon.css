@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+:root {
+    --emojicon-text: rgb(64, 128, 255);
+}
+
+form div.emojicon {
+	display: block;
+}
+
+.emojicon-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.emojicon-list div {
+	border-radius: 1.5rem;
+	border-style: solid;
+	border-width: thin;
+	font-family: 'Nova Mono', monospace;
+	font-size: 0.75rem;
+	margin-right: 0.5rem;
+	margin-top: 0.25rem;
+	padding: 0.5rem;
+
+}
+.emojicon-text {
+	color: var(--emojicon-text);
+	font-size: 0.85rem;
+}

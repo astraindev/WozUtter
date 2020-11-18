@@ -1,0 +1,48 @@
+:root {
+    --background-color: rgb(255, 255, 255);
+    --color: rgb(0, 0, 0);
+    --link-highlight: rgb(0, 128, 0);
+    --error: rgb(255, 0, 0);
+    --chat: rgb(64, 128, 64);
+    --chat-user: rgb(255, 128, 255);
+    --logo-blue: rgb(64, 128, 255);
+    --logo-red: rgb(255, 0, 0);
+    --logo-green: rgb(0, 128, 0);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: rgb(0, 0, 0);
+        --color: rgb(255, 255, 255);
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+a:link, a:visited {
+    color: var(--color);
+}
+
+a:hover, a:active {
+    color: var(--link-highlight);
+}
+
+.form-error,
+blockquote.error {
+    color: var(--error);
+}
+
+.logo-blue {
+	color: var(--logo-blue);
+}
+
+.logo-red {
+	color: var(--logo-red);
+}
+
+.logo-green {
+	color: var(--logo-green);
+}

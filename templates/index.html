@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>
+        <span class="logo-blue wozutter">Woz</span><span
+            class="logo-red wozutter">U</span><span class="logo-green wozutter">tter</span>
+        is a safe and secure Twitter replacement. It does not require any
+        identifiable information. When creating your account, both first and
+        last name are optional.
+    </p>
+    {% if not current_user.is_authenticated %}
+        <p>
+            Please feel free to <a href="{{ url_for('login') }}">Sign In</a> or <a
+                href="{{ url_for('signup') }}">Sign Up</a> as a new user. If you'd just like to
+            read posts, please continue as a <a href="{{ url_for('read_posts') }}">Guest</a>
+        </p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,4 @@
+FLASK_APP=server
+FLASK_DEBUG=false
+SECRET_KEY=abc012def345ghi678jkl9AB
+DATABASE_URL=sqlite:///../wozutter.db

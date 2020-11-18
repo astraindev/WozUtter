@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.bubble-content {
+	margin-top: -2rem;
+}
+
+#content-display,
+#content-update,
+#content-delete {
+	padding: 0.5rem;
+}
+
+#content-update,
+#content-delete {
+	display: none;
+}
+
+#content-delete-no {
+	margin-left: 1rem;
+}

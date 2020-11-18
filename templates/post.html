@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/bubble.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/modify.css">
+{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div class="bubble {{ 'bubble-mine' if current_user.id == post.user_id else 'bubble-default' }}">
+        <header class="bubble-header">
+            <div></div>
+            <div>
+                {% if current_user.id == post.user_id %}
+                    <div id="bubble-header-update" class="bubble-header-item">&#128221;</div>
+                    <div id="bubble-header-delete" class="bubble-header-item">&#10060;</div>
+                {% endif %}
+            </div>
+        </header>
+        <div class="bubble-content">
+            <div id="content-display">
+                {{ post.message }}
+            </div>
+            {% if current_user.id == post.user_id %}
+                <div id="content-update">
+                    <form action="{{ url_for('update_post', post_id=post.id) }}"
+                          method="post" novalidate>
+                        {{ form_update.hidden_tag() }}
+                        <p>
+                            {{ form_update.message.label }}<br>
+                            {{ form_update.message(size=140, maxlength=140, required=True, autofocus=True, value=post.message) }}
+                            {% for error in form_update.message.errors %}
+                                <span class="form-error">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>{{ form_update.submit() }}</p>
+                    </form>
+                </div>
+                <div id="content-delete">
+                    <form action="{{ url_for('delete_post', post_id=post.id) }}"
+                          method="post">
+                        {{ form_delete.hidden_tag() }}
+                        <p>
+                            <span class="logo-blue wozutter">Woz</span><span
+                                class="logo-red wozutter">U</span><span
+                                class="logo-green wozutter">tter</span>: Are you sure?
+                        </p>
+                        <p>
+                            {{ form_delete.submit() }}
+                            <button type="button" id="content-delete-no"
+                                    class="content-delete-button">No
+                            </button>
+                        <p>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="../static/js/modify.js"></script>
+{% endblock %}

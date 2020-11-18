@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+:root {
+    --bubble-default: rgb(224, 224, 224);
+    --bubble-mine: rgb(135, 206, 250);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bubble-default: rgb(128, 128, 128);
+    	--bubble-mine: rgb(64, 64, 255);
+    }
+}
+
+.bubble {
+	border-radius: 1.5rem;
+	border-style: solid;
+	border-width: thin;
+	margin: 1rem 0rem;
+	min-width: 311px;
+}
+
+.bubble-default {
+	background-color: var(--bubble-default);
+}
+
+.bubble-mine {
+	background-color: var(--bubble-mine);
+}
+
+.bubble-header {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.75rem;
+}
+
+.bubble-header-item {
+	display: inline;
+	padding-left: 0.5rem;
+}
+
+.bubble-content {
+	padding: 1rem;
+}
